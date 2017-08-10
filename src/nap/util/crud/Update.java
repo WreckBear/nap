@@ -1,4 +1,4 @@
-package nap.itf.util.crud;
+package nap.util.crud;
 
 public class Update {
 

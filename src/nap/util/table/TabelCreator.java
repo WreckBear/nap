@@ -1,4 +1,4 @@
-package nap.itf.util.table;
+package nap.util.table;
 
 /**
  * 用来自动创建数据库表的工具类
