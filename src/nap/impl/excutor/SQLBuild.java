@@ -1,4 +1,4 @@
-package nap.util.crud;
+package nap.impl.excutor;
 
 import nap.itf.model.base.BaseModel;
 

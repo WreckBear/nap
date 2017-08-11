@@ -1,4 +1,4 @@
-package nap.util.crud;
+package nap.impl.excutor;
 
 public class Query {
 
