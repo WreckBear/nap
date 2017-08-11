@@ -3,20 +3,20 @@ package open.nap.itf.model.base;
 public interface BaseModel {
 
 	/**
-	 * ��ȡ�����Model��Ӧ�ı���
+	 * 得到该实体所对应的表名
 	 * @return
 	 */
 	public String getTableName();
 	
 	
 	/**
-	 * ��ȡ����Model��ȫ����
+	 * 得到该实体的全类名
 	 * @return
 	 */
 	public String getModelClassName();
 	
 	/**
-	 * ��ȡ����Model��������
+	 * 得到该实体的主键名
 	 * @return
 	 */
 	public String getModelIDName();

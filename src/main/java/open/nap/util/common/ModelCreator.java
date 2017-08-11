@@ -1,7 +1,7 @@
 package open.nap.util.common;
 
 /**
- * �����������ݿ�����Զ�����ʵ��Ĺ�����
+ * 根据已存在的表结构生成实体的生成器
  * @author zhanghao10
  *
  */

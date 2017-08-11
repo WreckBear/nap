@@ -8,7 +8,7 @@ import open.nap.itf.excutor.IInsertExcutor;
 public class NapFactory {
 
 	/**
-	 * ��ò���ִ����
+	 * 工厂方法，用来返回插入执行器的实例
 	 * @param ds
 	 * @return
 	 */

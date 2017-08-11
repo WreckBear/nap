@@ -5,14 +5,14 @@ import java.sql.SQLException;
 import open.nap.itf.model.base.BaseModel;
 
 /**
- * ����ִ�����ӿ�
+ * 插入执行器
  * @author zhanghao10
  *
  */
 public interface IInsertExcutor {
 
 	/**
-	 * �����κζ���Ĳ��룬��֧�ֽ��������������
+	 * 对任意继承BaseModel的Model进行插入
 	 * @param model
 	 * @return
 	 */

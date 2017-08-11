@@ -14,14 +14,14 @@ public class TestSQlBuilder {
 	
 	private static Student mockAStudent() {
 		Student student = new Student();
-		student.setName("����");
+		student.setName("张三");
 		student.setStuID("XH001");
 		return student;
 	}
 
 	private static Teacher mockATeacher() {
 		Teacher teacher = new Teacher();
-		teacher.setName("����ʦ");
+		teacher.setName("张老师");
 		teacher.setAge(34);
 		return teacher;
 	}
