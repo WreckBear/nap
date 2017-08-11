@@ -11,6 +11,17 @@ public class SQLBuild {
 	 * @return
 	 */
 	public static String buildInsertSQL(BaseModel model) {
+		try {
+			String modelClassName = model.getModelClassName();
+			Class<?> forName = Class.forName(modelClassName);
+			
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
 		return null;
 	}
 	

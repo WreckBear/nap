@@ -1,11 +1,9 @@
 package nap.test.main;
 
-import javax.sql.DataSource;
-
 import nap.ds.DataSourceUtil;
 import nap.factory.excutor.NapFactory;
-import nap.impl.excutor.Insert;
 import nap.itf.excutor.IInsertExcutor;
+import nap.test.model.Student;
 import nap.test.model.Teacher;
 
 public class Main {
@@ -16,9 +14,19 @@ public class Main {
 		
 		// 模拟插入对象
 		Teacher teacher = mockATeacher();
+		Student student = mockAStudent();
 		
 		// 进行插入
 		insert.insert(teacher);
+		insert.insert(student);
+	}
+
+	
+	private static Student mockAStudent() {
+		Student student = new Student();
+		student.setName("张三");
+		student.setStuID("XH001");
+		return student;
 	}
 
 	private static Teacher mockATeacher() {
