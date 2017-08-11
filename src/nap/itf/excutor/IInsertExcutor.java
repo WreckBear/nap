@@ -1,5 +1,7 @@
 package nap.itf.excutor;
 
+import java.sql.SQLException;
+
 import nap.itf.model.base.BaseModel;
 
 /**
@@ -7,7 +9,7 @@ import nap.itf.model.base.BaseModel;
  * @author zhanghao10
  *
  */
-public interface InsertExcutor {
+public interface IInsertExcutor {
 
 	/**
 	 * 对于任何对象的插入，都支持仅传对象参数即可

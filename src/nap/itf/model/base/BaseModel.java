@@ -8,6 +8,13 @@ public interface BaseModel {
 	 */
 	public String getTableName();
 	
+	
+	/**
+	 * 获取到该Model的全类名
+	 * @return
+	 */
+	public String getModelClassName();
+	
 	/**
 	 * 获取到该Model的主键名
 	 * @return

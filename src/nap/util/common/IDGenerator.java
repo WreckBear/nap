@@ -1,4 +1,4 @@
-package nap.impl.excutor;
+package nap.util.common;
 
 /**
  * Ö÷¼üÉú³ÉÆ÷

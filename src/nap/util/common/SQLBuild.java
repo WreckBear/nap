@@ -1,4 +1,4 @@
-package nap.impl.excutor;
+package nap.util.common;
 
 import nap.itf.model.base.BaseModel;
 
