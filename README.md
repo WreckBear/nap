@@ -4,11 +4,11 @@
 
 ## 快速入门
 
->	INAPSession session = NapFactory.getSession();
-	session.insert(obj);
-	session.delete(obj);
-	session.update(obj);
-	session.queryByPK(obj);
+>	INAPSession session = NapFactory.getSession();<br/>
+	session.insert(obj);<br/>
+	session.delete(obj);<br/>
+	session.update(obj);<br/>
+	session.queryByPK(obj);<br/>
 	
 · 对象所对应的表不存在，第一次插入的时候会自动构建表结构，并插入数据。·
 
