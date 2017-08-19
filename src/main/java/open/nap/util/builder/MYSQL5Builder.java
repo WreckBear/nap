@@ -1,13 +1,27 @@
-package open.nap.util.common;
+package open.nap.util.builder;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.HashMap;
 
 import open.nap.itf.model.base.BaseModel;
+import open.nap.util.common.ReflectUtil;
 
-public class SQLBuild {
+/**
+ * 针对MYSQL5 的SQL拼接工具
+ * @author zhanghao10
+ */
+public class MYSQL5Builder extends CommonBuilder{
 
+	/** 初始化映射表  **/
+	static {
+		typeMap = new HashMap<>();
+		typeMap.put(String.class, "varchar(255)");
+		typeMap.put(Integer.class, "int");
+	}
+	
+	
 	/**
 	 * 自动构建插入的sql
 	 * @param model
@@ -19,16 +33,16 @@ public class SQLBuild {
 		sql.append(model.getTableName());
 		try {
 			// 获取到实体的类对象
-			Class modelClass = getModelClassByModel(model);
+			Class modelClass = model.getClass();
 			// 获取到实体的全部属性
-			Field[] declaredFields = getAllField(modelClass);
+			Field[] declaredFields = ReflectUtil.getAllField(modelClass);
 			// 创建属性和属性值两个拼接串
 			StringBuffer attr = new StringBuffer(" ( ");
 			StringBuffer attrVal = new StringBuffer(" values ( ");
 			// 遍历所有属性，拼接sql的属性和值的部分
 			for (Field field : declaredFields) {
 				attr.append(field.getName()+",");
-				Method method = getMethodByField(modelClass,field);
+				Method method = ReflectUtil.getMethodByField(modelClass,field);
 				attrVal.append(method.invoke(model)+",");
 			}
 			// 删除末尾的逗号
@@ -40,8 +54,6 @@ public class SQLBuild {
 			// 拼接sql
 			sql.append(attr).append(attrVal);
 			
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
@@ -57,41 +69,23 @@ public class SQLBuild {
 	}
 
 	/**
-	 * 根据模型获取到模型对应的类对象
-	 * @param modelClassName
-	 * @return
-	 * @throws ClassNotFoundException
+	 * 构建创建表的SQL语句
+	 * @param tableName
+	 * @param fields
 	 */
-	private static Class getModelClassByModel(BaseModel model) throws ClassNotFoundException {
-		String modelClassName = model.getModelClassName();
-		return Class.forName(modelClassName);
-	}
-
-
-	/**
-	 * 得到某类对象中的所有属性值
-	 * @param modelClass
-	 * @return
-	 */
-	private static Field[] getAllField(Class<?> modelClass) {
-		return modelClass.getDeclaredFields();
-	}
-
-
-	/**
-	 * 根据Field获取到类对象对应的get方法
-	 * @param clazz
-	 * @param field
-	 * @return
-	 * @throws NoSuchMethodException
-	 * @throws SecurityException
-	 */
-	private static Method getMethodByField(Class clazz,Field field) throws NoSuchMethodException, SecurityException {
-		String fieldName = field.getName();
-		char firstChar = fieldName.charAt(0);
-		String firstStr = new String(new char[]{firstChar});
-		String methodName = fieldName.replaceFirst(firstStr, firstStr.toUpperCase());
-		return clazz.getMethod("get"+methodName);
+	public static String buildCreateTableSQL(String tableName, Field[] fields) {
+		StringBuffer sql = new StringBuffer("CREATE TABLE ");
+		sql.append(tableName);
+		sql.append(" (");
+		for (Field field : fields) {
+			sql.append(field.getName());
+			sql.append(" ");
+			sql.append(typeMap.get(field.getType()));
+			sql.append(",");
+		}
+		sql.deleteCharAt(sql.length()-1);
+		sql.append(" )");
+		return sql.toString();
 	}
 	
 }

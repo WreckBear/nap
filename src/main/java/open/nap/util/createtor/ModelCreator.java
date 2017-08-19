@@ -1,4 +1,4 @@
-package open.nap.util.common;
+package open.nap.util.createtor;
 
 /**
  * 根据已存在的表结构生成实体的生成器

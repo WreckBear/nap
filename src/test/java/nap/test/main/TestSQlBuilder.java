@@ -2,13 +2,13 @@ package nap.test.main;
 
 import nap.test.model.Student;
 import nap.test.model.Teacher;
-import open.nap.util.common.SQLBuild;
+import open.nap.util.builder.MYSQL5Builder;
 
 public class TestSQlBuilder {
 
 	public static void main(String[] args) {
 		Student student = mockAStudent();
-		String sql = SQLBuild.buildInsertSQL(student);
+		String sql = MYSQL5Builder.buildInsertSQL(student);
 		System.out.println(sql);
 	}
 	
